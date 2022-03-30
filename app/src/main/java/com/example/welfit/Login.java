@@ -31,8 +31,6 @@ public class Login extends AppCompatActivity {
         pwInput = findViewById(R.id.loginPassword);
         errorMsg = findViewById(R.id.loginError);
 
-        // Configure the Biometric Login Prompts and methods
-        executor = ContextCompat.getMainExecutor(this);
 
     }
 

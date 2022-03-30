@@ -15,4 +15,11 @@
         android:layout_marginTop="200dp"
         android:layout_marginBottom="100dp"
         />
+
+    <ImageButton
+        android:id="@+id/qr_scanner"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/qrscanner"/>
 </RelativeLayout>
