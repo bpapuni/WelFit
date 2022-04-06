@@ -7,4 +7,12 @@
     <string name="signUp">Not a member? <a href="#">Sign Up</a></string>
     <string name="invalidEmail">Email not recognised!</string>
     <string name="invalidPassword">Incorrect password!</string>
+    <string name="reservations">Reservations</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="exercises">Exercises</string>
+    <string name="membership">Membership</string>
+    <string name="contactus">Contact Us</string>
+    <string name="exercise_filters">Filters\n<a href="ex_chest">Chest</a> - <a href="ex_shoulders">Shoulders</a> - <a href="ex_back">Back</a> - <a href="ex_quads">Quads</a> - <a href="triceps">Triceps</a> - <a href="ex_biceps">Biceps</a></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

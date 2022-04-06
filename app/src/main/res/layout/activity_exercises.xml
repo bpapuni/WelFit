@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <VideoView
+        android:id="@+id/example_exercise_video"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:tooltipText="Example video plays here when an exercise is selected">
+
+    </VideoView>
+
+    <TextView
+        android:id="@+id/filters"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/exercise_filters"
+        android:layout_below="@+id/example_exercise_video">
+    </TextView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/filters">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <FrameLayout
+                android:id="@+id/exercises_frame1"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_centerHorizontal="true" >
+
+                <Button
+                    android:id="@+id/btn_bench_press"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:text="Bench Press"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btn_shoulder_press"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="right"
+                    android:text="Shoulder Press"
+                    android:textSize="20dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/exercises_frame2"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exercises_frame1"
+                android:layout_marginBottom="20dp"
+                android:layout_centerHorizontal="true" >
+
+                <Button
+                    android:id="@+id/btn_lateral_raises"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:text="Lateral Raises"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btn_lat_pulldowns"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="right"
+                    android:text="Lat Pulldowns"
+                    android:textSize="20dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/exercises_frame3"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exercises_frame2"
+                android:layout_marginBottom="20dp"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:id="@+id/btn_back_squat"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:text="Back Squat"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btn_deadlift"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="right"
+                    android:text="Deadlift"
+                    android:textSize="20dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/exercises_frame4"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exercises_frame3"
+                android:layout_marginBottom="20dp"
+                android:layout_centerHorizontal="true">
+
+                <Button
+                    android:id="@+id/btn_tricep_dips"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:text="Tricep Dips"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btn_bicep_curls"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"
+                    android:layout_gravity="right"
+                    android:text="Bicep Curls"
+                    android:textSize="20dp" />
+            </FrameLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

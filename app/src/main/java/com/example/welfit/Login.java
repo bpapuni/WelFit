@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -17,10 +20,15 @@ import java.util.concurrent.Executor;
 
 public class Login extends AppCompatActivity {
 
-    EditText emailInput, pwInput;
-    TextView errorMsg;
     User user = new User("admin@gmail.com", "admin");
-    private Executor executor;
+
+    private EditText emailInput, pwInput;
+    private TextView errorMsg;
+    private CheckBox saveLoginCheckBox;
+
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +38,16 @@ public class Login extends AppCompatActivity {
         emailInput = findViewById(R.id.loginEmail);
         pwInput = findViewById(R.id.loginPassword);
         errorMsg = findViewById(R.id.loginError);
+        saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
 
-
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin == true) {
+            emailInput.setText(loginPreferences.getString("username", ""));
+            pwInput.setText(loginPreferences.getString("password", ""));
+            saveLoginCheckBox.setChecked(true);
+        }
     }
 
     // Begin authentication when Login button is clicked.
@@ -41,6 +57,23 @@ public class Login extends AppCompatActivity {
 
     // Check login details match those kept on record.
     public void Authenticate() {
+        InputMethodManager imm = (InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(emailInput.getWindowToken(), 0);
+
+        String username = emailInput.getText().toString();
+        String password = pwInput.getText().toString();
+
+        if (saveLoginCheckBox.isChecked()) {
+            loginPrefsEditor.putBoolean("saveLogin", true);
+            loginPrefsEditor.putString("username", username);
+            loginPrefsEditor.putString("password", password);
+            loginPrefsEditor.commit();
+        } else {
+            loginPrefsEditor.clear();
+            loginPrefsEditor.commit();
+        }
+
+//        doSomethingElse();
         if (emailInput.getText().toString().equals(user.getEmail())) {
             if (pwInput.getText().toString().equals(user.getPassword())) {
                 ShowLandingPage();

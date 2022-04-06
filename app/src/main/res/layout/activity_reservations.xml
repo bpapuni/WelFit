@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_boxing"
+            android:layout_width="360dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="Boxing"
+            android:textSize="30dp" />
+
+        <FrameLayout
+            android:id="@+id/frame1"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/btn_boxing"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/btn_yoga"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:text="Yoga"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btn_hiit"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_gravity="right"
+                android:text="H.I.I.T"
+                android:textSize="30dp" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_sandc"
+            android:layout_width="360dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/frame1"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="Strength &amp; Conditioning"
+            android:textSize="30dp" />
+
+        <FrameLayout
+            android:id="@+id/frame2"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/btn_sandc"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/btn_yoga"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:text="Yoga"
+                android:textSize="30dp" />
+
+            <Button
+                android:id="@+id/btn_hiit"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_gravity="right"
+                android:text="H.I.I.T"
+                android:textSize="30dp" />
+        </FrameLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>
