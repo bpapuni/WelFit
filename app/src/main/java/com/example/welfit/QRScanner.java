@@ -47,9 +47,10 @@ public class QRScanner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), qrCode, Toast.LENGTH_SHORT).show();
-//                Log.i(MainActivity.class.getSimpleName(), "QR Code Found: " + qrCode);
+                Log.i(MainActivity.class.getSimpleName(), "QR Code Found: " + qrCode);
             }
         });
+
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         requestCamera();
     }
@@ -120,6 +121,6 @@ public class QRScanner extends AppCompatActivity {
             }
         }));
 
-        Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, preview);
+        Camera camera = cameraProvider.bindToLifecycle((LifecycleOwner)this, cameraSelector, imageAnalysis, preview);
     }
 }
