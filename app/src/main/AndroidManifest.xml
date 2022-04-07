@@ -3,6 +3,7 @@
     package="com.example.welfit">
 
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -13,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".ContactUs"
+            android:exported="false" />
+        <activity
             android:name=".Membership"
             android:exported="false" />
         <activity
@@ -22,7 +26,7 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Reservations"
+            android:name=".MakeReservations"
             android:exported="false" />
         <activity
             android:name=".QRScanner"

@@ -12,6 +12,8 @@
         android:layout_marginBottom="10dp"
         android:padding="15dp"
         android:text="@string/reservations"
+        android:backgroundTint="@color/welfit_grey"
+        android:textColor="@color/white"
         android:textSize="30dp" />
 
     <Button
@@ -21,6 +23,8 @@
         android:padding="15dp"
         android:textSize="30dp"
         android:text="@string/dashboard"
+        android:backgroundTint="@color/welfit_grey"
+        android:textColor="@color/white"
         android:layout_below="@+id/btn_reservations"
         android:layout_marginBottom="10dp" />
 
@@ -31,6 +35,8 @@
         android:padding="15dp"
         android:textSize="30dp"
         android:text="@string/exercises"
+        android:backgroundTint="@color/welfit_grey"
+        android:textColor="@color/white"
         android:layout_below="@+id/btn_dashboard"
         android:layout_marginBottom="10dp" />
 
@@ -41,6 +47,8 @@
         android:padding="15dp"
         android:textSize="30dp"
         android:text="@string/membership"
+        android:backgroundTint="@color/welfit_grey"
+        android:textColor="@color/white"
         android:layout_below="@+id/btn_exercises"
         android:layout_marginBottom="10dp" />
 
@@ -51,6 +59,8 @@
         android:padding="15dp"
         android:textSize="30dp"
         android:text="@string/contactus"
+        android:backgroundTint="@color/welfit_grey"
+        android:textColor="@color/white"
         android:layout_below="@+id/btn_membership"
         android:layout_marginBottom="10dp" />
 
@@ -61,19 +71,19 @@
 
         <ImageButton
             android:id="@+id/qr_scanner"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/qrscanner" />
 
         <ImageButton
             android:id="@+id/stopwatch"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="15dp"
             android:background="@drawable/stopwatch" />
     </FrameLayout>
 

@@ -1,12 +1,9 @@
 package com.example.welfit;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,12 +12,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.concurrent.Executor;
-
 
 public class Login extends AppCompatActivity {
 
-    User user = new User("admin@gmail.com", "admin");
+    User user = new User("admin@gmail.com", "admin", "John", "Doe");
 
     private EditText emailInput, pwInput;
     private TextView errorMsg;
@@ -98,15 +93,5 @@ public class Login extends AppCompatActivity {
             Authenticate();
         }
         return super.onKeyUp(keyCode, event);
-    }
-
-    // Override the onBackPressed method to close the application if the back btn is pressed.
-    @Override
-    public void onBackPressed() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            finishAffinity();
-        } else {
-            super.onBackPressed();
-        }
     }
 }
