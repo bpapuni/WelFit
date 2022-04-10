@@ -25,5 +25,6 @@
     <string name="membership_info">Membership information would be stored here. Including:\nMembership price, billing history, billing account number.\n\nFunctionality to change app password would also be included.</string>
     <!--    Contact Us strings-->
     <string name="contact_us_info">Contact methods would be displayed here including:\nSocial media links, email address, phone number and a form to submit a query.</string>
-
+    <!--    Stopwatch strings-->
+    <string name="stopwatch">A functioning stopwatch would be implemented on this activity to provide the user the ability to time themselves when completing exercises such as abdominal planks.</string>
 </resources>

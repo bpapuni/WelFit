@@ -41,15 +41,6 @@ public class QRScanner extends AppCompatActivity {
 
         previewView = findViewById(R.id.activity_qrScanner_previewView);
 
-        qrCodeFoundButton = findViewById(R.id.activity_qrScanner_qrCodeFoundButton);
-        qrCodeFoundButton.setVisibility(View.INVISIBLE);
-        qrCodeFoundButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), qrCode, Toast.LENGTH_SHORT).show();
-            }
-        });
-
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         requestCamera();
     }
@@ -111,12 +102,13 @@ public class QRScanner extends AppCompatActivity {
             @Override
             public void onQRCodeFound(String _qrCode) {
                 qrCode = _qrCode;
-                qrCodeFoundButton.setVisibility(View.VISIBLE);
+                Toast.makeText(QRScanner.this, qrCode, Toast.LENGTH_SHORT).show();
+                // Redirect to exercises activity and display video for scanned equipment
             }
 
             @Override
             public void qrCodeNotFound() {
-                qrCodeFoundButton.setVisibility(View.INVISIBLE);
+                // Do nothing
             }
         }));
 

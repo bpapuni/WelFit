@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         contactusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, MakeReservations.class));
+                startActivity(new Intent(MainActivity.this, ContactUs.class));
             }
         });
 
@@ -65,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, QRScanner.class));
+            }
+        });
+
+        stopwatchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, StopWatch.class));
             }
         });
     }

@@ -36,11 +36,11 @@
                 android:onClick="MakeReservation" />
 
             <Button
-                android:id="@+id/btn_hiit"
+                android:id="@+id/btn_pilates"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 android:layout_gravity="right"
-                android:text="H.I.I.T"
+                android:text="Pilates"
                 android:textSize="30dp"
                 android:onClick="MakeReservation" />
         </FrameLayout>
@@ -53,6 +53,43 @@
             android:layout_marginBottom="10dp"
             android:layout_centerHorizontal="true"
             android:text="Strength &amp; Conditioning"
+            android:textSize="30dp"
+            android:onClick="MakeReservation"/>
+
+        <FrameLayout
+            android:id="@+id/frame2"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/btn_sandc"
+            android:layout_centerInParent="true">
+
+            <Button
+                android:id="@+id/btn_circuit_training"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:text="Circuit Training"
+                android:textSize="30dp"
+                android:onClick="MakeReservation" />
+
+            <Button
+                android:id="@+id/btn_hiit"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                android:layout_gravity="right"
+                android:text="H.I.I.T"
+                android:textSize="30dp"
+                android:onClick="MakeReservation" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btn_crossfit"
+            android:layout_width="360dp"
+            android:layout_height="170dp"
+            android:layout_below="@+id/frame2"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="Crossfit"
             android:textSize="30dp"
             android:onClick="MakeReservation"/>
 
