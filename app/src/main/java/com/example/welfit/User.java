@@ -1,36 +1,21 @@
 package com.example.welfit;
 
 public class User {
+    private int id;
     private String email;
     private String password;
-    private String firstName;
-    private String lastName;
 
-    public User(String email, String firstName, String lastName) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    public User() {}
 
-    public User(String email, String password, String firstName, String lastName){
+    public User(int id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }

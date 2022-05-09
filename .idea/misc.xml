@@ -15,12 +15,16 @@
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_membership.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_qrscanner.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_reservations.xml" value="0.22" />
+        <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_stop_watch.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/activity_view_users.xml" value="0.1" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/fragment_calendar.xml" value="0.31213872832369943" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/fragment_exercise_video.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/fragment_inbox.xml" value="0.33" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/fragment_weight_graph.xml" value="0.33" />
+        <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/layout/user_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/mipmap-anydpi-v26/wf_login.xml" value="0.196" />
         <entry key="..\:/Users/Brent/AndroidStudioProjects/WelFit/app/src/main/res/mipmap-anydpi-v26/wf_login_round.xml" value="0.196" />
       </map>

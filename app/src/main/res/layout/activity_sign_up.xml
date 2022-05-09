@@ -1,83 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/loginbg"
-    >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="70sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="160dp"
-        android:layout_marginBottom="100dp"
-        />
+    tools:context=".SignUp">
 
     <EditText
-        android:id="@+id/login_email"
+        android:id="@+id/sign_up_email"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="160dp"
         android:layout_marginBottom="10dp"
-        android:hint="@string/login_email"
+        android:hint="@string/sign_up_email"
         android:inputType="text"
         android:backgroundTint="@color/white"
         android:padding="4dp"
         android:background="@drawable/edittextbackground" />
 
     <EditText
-        android:id="@+id/login_password"
+        android:id="@+id/sign_up_password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="@string/login_password"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/sign_up_password"
         android:inputType="textPassword"
         android:backgroundTint="@color/white"
         android:padding="4dp"
         android:background="@drawable/edittextbackground"
         />
 
-    <CheckBox
-        android:id="@+id/remember_me"
+    <EditText
+        android:id="@+id/sign_up_confirm_password"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/login_remember_me"
-        android:textColor="#D8D7D7"
-        android:buttonTint="#D8D7D7"
+        android:hint="@string/sign_up_confirm_password"
+        android:inputType="textPassword"
+        android:backgroundTint="@color/white"
+        android:padding="4dp"
+        android:background="@drawable/edittextbackground"
         />
 
     <TextView
-        android:id="@+id/login_error"
+        android:id="@+id/sign_up_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#FF0000"
+        android:padding="4dp"
         android:gravity="center"
         />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_sign_up"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="@string/sign_up"
         android:textColor="@color/white"
         android:backgroundTint="#127F8B"
         android:layout_gravity="center"
-        android:onClick="BeginAuthentication"
         />
 
-    <TextView
-        android:id="@+id/btn_sign_up"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_view_users"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up_cta"
+        android:text="View Users"
         android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
+        android:backgroundTint="#127F8B"
+        android:layout_gravity="center"
         />
+
 </LinearLayout>

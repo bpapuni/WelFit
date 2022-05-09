@@ -1,13 +1,18 @@
 <resources>
     <string name="app_name">WelFit</string>
     <!--    Login Screen strings-->
-    <string name="email">Email</string>
-    <string name="password">Password</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
     <string name="login">Login</string>
-    <string name="rememberMe">Remember Me</string>
-    <string name="signUp">Not a member? <a href="#">Sign Up</a></string>
-    <string name="invalidEmail">Email not recognised!</string>
-    <string name="invalidPassword">Incorrect password!</string>
+    <string name="login_remember_me">Remember Me</string>
+    <string name="sign_up_cta">Not a member? <a href="welfit://signup">Sign Up</a></string>
+    <string name="invalid_login_email">Email not recognised!</string>
+    <string name="invalid_login_password">Incorrect password!</string>
+    <!--    Sign Up Screen strings-->
+    <string name="sign_up_email">Enter Email</string>
+    <string name="sign_up_password">Enter Password</string>
+    <string name="sign_up_confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
     <!--    Landing page strings-->
     <string name="reservations">Reservations</string>
     <string name="dashboard">Dashboard</string>

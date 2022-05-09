@@ -73,6 +73,6 @@ public class MakeReservations extends AppCompatActivity {
                 break;
         }
 
-        reservation = new Reservation(email, firstName, lastName, className, time);
+//        reservation = new Reservation(email, firstName, lastName, className, time);
     }
 }
