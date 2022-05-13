@@ -5,10 +5,12 @@
     <string name="login_password">Password</string>
     <string name="login">Login</string>
     <string name="login_remember_me">Remember Me</string>
-    <string name="sign_up_cta">Not a member? <a href="welfit://signup">Sign Up</a></string>
+    <string name="sign_up_cta">Not a member? <a href="welfit://signup"><b>Sign Up</b></a></string>
     <string name="invalid_login_email">Email not recognised!</string>
     <string name="invalid_login_password">Incorrect password!</string>
     <!--    Sign Up Screen strings-->
+    <string name="sign_up_first_name">Enter First Name</string>
+    <string name="sign_up_last_name">Enter Last Name</string>
     <string name="sign_up_email">Enter Email</string>
     <string name="sign_up_password">Enter Password</string>
     <string name="sign_up_confirm_password">Confirm Password</string>
@@ -32,4 +34,6 @@
     <string name="contact_us_info">Contact methods would be displayed here including:\nSocial media links, email address, phone number and a form to submit a query.</string>
     <!--    Stopwatch strings-->
     <string name="stopwatch">A functioning stopwatch would be implemented on this activity to provide the user the ability to time themselves when completing exercises such as abdominal planks.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

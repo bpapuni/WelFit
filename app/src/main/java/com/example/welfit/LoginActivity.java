@@ -2,13 +2,11 @@ package com.example.welfit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 
-import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,7 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     ArrayList<User> usersArrayList;
     private DbHandler dbHandler;
 
@@ -38,13 +36,14 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         usersArrayList = new ArrayList<>();
-        dbHandler = new DbHandler(Login.this);
+        dbHandler = new DbHandler(LoginActivity.this);
         usersArrayList = dbHandler.getUserDetails();
 
         emailInput = findViewById(R.id.login_email);
         pwInput = findViewById(R.id.login_password);
         errorMsg = findViewById(R.id.login_error);
         signUp = findViewById(R.id.btn_sign_up);
+        signUp.setMovementMethod(LinkMovementMethod.getInstance());
         rememberMeCheckBox = findViewById(R.id.remember_me);
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
@@ -55,8 +54,6 @@ public class Login extends AppCompatActivity {
             pwInput.setText(loginPreferences.getString("password", ""));
             rememberMeCheckBox.setChecked(true);
         }
-
-        signUp.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     public void BeginAuthentication(View v) {
@@ -84,13 +81,20 @@ public class Login extends AppCompatActivity {
         if (!usersArrayList.isEmpty()) {
             // Iterate through database
             for (User u : usersArrayList) {
+                // Reset login status of all users
+                u.setIsLoggedIn("false");
                 // Check if user email input is in the database
                 if (emailInput.getText().toString().equals(u.getEmail())) {
                     if (pwInput.getText().toString().equals(u.getPassword())) {
-                        startActivity(new Intent(this, MainActivity.class));
+                        u.setIsLoggedIn("true");
+                        dbHandler.updateUserDetails(u);
+                        startActivity(new Intent(this, LandingPageActivity.class));
+                        errorMsg.setText("");
                     } else {
                         errorMsg.setText(R.string.invalid_login_password);
                     }
+                    // Exit loop once instance is found
+                    break;
                 }
                 // No instance of the users email input found in the database
                 else if (usersArrayList.indexOf(u) == usersArrayList.size() - 1) {
@@ -98,7 +102,7 @@ public class Login extends AppCompatActivity {
                 }
             }
         } else {
-            Toast.makeText(this, "poos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No database exists!", Toast.LENGTH_SHORT).show();
         }
     }
 }

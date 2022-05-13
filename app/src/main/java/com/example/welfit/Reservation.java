@@ -2,20 +2,22 @@ package com.example.welfit;
 
 import java.time.LocalDateTime;
 
-public class Reservation extends User {
+public class Reservation {
+    private int id;
+    private int userId;
     private String className;
     private LocalDateTime time;
 
-//    public Reservation(String email, String firstName, String lastName, String className, LocalDateTime time) {
-//        super(email, firstName, lastName);
-//        this.className = className;
-//        this.time = time;
-//    }
+    public Reservation(int id, int userId, String className, LocalDateTime time) {
+        this.id = id;
+        this.userId = userId;
+        this.className = className;
+        this.time = time;
+    }
 
     public String getClassName() {
         return className;
     }
-
     public LocalDateTime getTime() {
         return time;
     }

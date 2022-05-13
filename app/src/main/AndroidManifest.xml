@@ -14,34 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".ViewUsers"
+            android:name=".ViewUsersActivity"
             android:exported="false" />
         <!-- <activity -->
         <!-- android:name=".SignUp" -->
         <!-- android:exported="false" /> -->
         <activity
-            android:name=".StopWatch"
+            android:name=".StopWatchActivity"
             android:exported="false" />
         <activity
-            android:name=".ContactUs"
+            android:name=".ContactUsActivity"
             android:exported="false" />
         <activity
-            android:name=".Membership"
+            android:name=".MembershipActivity"
             android:exported="false" />
         <activity
-            android:name=".Exercises"
+            android:name=".ExercisesActivity"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".DashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".MakeReservations"
+            android:name=".ReservationsActivity"
             android:exported="false" />
         <activity
             android:name=".QRScanner"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUp"
+            android:name=".SignUpActivity"
             android:exported="true">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
@@ -63,7 +63,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".LandingPageActivity"
             android:exported="true" />
     </application>
 

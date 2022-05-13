@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ViewUsers extends AppCompatActivity {
+public class ViewUsersActivity extends AppCompatActivity {
 
     // creating variables for our array list,
     // dbhandler, adapter and recycler view.
@@ -24,18 +24,18 @@ public class ViewUsers extends AppCompatActivity {
 
         // initializing our all variables.
         userArrayList = new ArrayList<>();
-        dbHandler = new DbHandler(ViewUsers.this);
+        dbHandler = new DbHandler(ViewUsersActivity.this);
 
         // getting our course array
         // list from db handler class.
         userArrayList = dbHandler.getUserDetails();
 
         // on below line passing our array lost to our adapter class.
-        userRVAdapter = new UserRecyclerViewAdapter(userArrayList, ViewUsers.this);
+        userRVAdapter = new UserRecyclerViewAdapter(userArrayList, ViewUsersActivity.this);
         usersRV = findViewById(R.id.users_recycler_view);
 
         // setting layout manager for our recycler view.
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewUsers.this, RecyclerView.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewUsersActivity.this, RecyclerView.VERTICAL, false);
         usersRV.setLayoutManager(linearLayoutManager);
 
         // setting our adapter to recycler view.

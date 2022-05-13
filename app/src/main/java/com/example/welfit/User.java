@@ -1,16 +1,42 @@
 package com.example.welfit;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
 public class User {
     private int id;
-    private String email;
-    private String password;
+    private String firstName, lastName, email, password, loggedIn;
+    private ArrayList<Reservation> reservations;
 
-    public User() {}
-
-    public User(int id, String email, String password) {
+    public User(int id, String firstName, String lastName, String email, String password, String loggedIn) {
         this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.loggedIn = loggedIn;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -27,5 +53,12 @@ public class User {
         this.password = password;
     }
 
+    public String isLoggedIn() { return loggedIn; }
+    public void setIsLoggedIn(String value) { this.loggedIn = value; }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return "Id: " + id + ", fName: " + firstName + ", lName: " + lastName + ", email: " + email + ", password: " + password + ", loggedIn: " + loggedIn;
+    }
 }

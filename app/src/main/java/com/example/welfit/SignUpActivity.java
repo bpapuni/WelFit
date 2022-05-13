@@ -3,7 +3,6 @@ package com.example.welfit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SignUp extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
     private TextView errorMsg;
-    private EditText editTextEmail, editTextPw, editTextConfirmPw;
+    private EditText editTextFirstName, editTextLastName, editTextEmail, editTextPw, editTextConfirmPw;
     private Button btnSignUp, btnReadUsers;
     private DbHandler dbHandler;
 
@@ -27,12 +26,14 @@ public class SignUp extends AppCompatActivity {
 //        email.setText(data);
 
         errorMsg = findViewById(R.id.sign_up_error);
+        editTextFirstName = findViewById(R.id.sign_up_first_name);
+        editTextLastName = findViewById(R.id.sign_up_last_name);
         editTextEmail = findViewById(R.id.sign_up_email);
         editTextPw = findViewById(R.id.sign_up_password);
         editTextConfirmPw = findViewById(R.id.sign_up_confirm_password);
         btnSignUp = findViewById(R.id.btn_sign_up);
         btnReadUsers = findViewById(R.id.btn_view_users);
-        dbHandler = new DbHandler(SignUp.this);
+        dbHandler = new DbHandler(SignUpActivity.this);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +41,11 @@ public class SignUp extends AppCompatActivity {
                 User user = null;
                 try {
                     // Check if fields are empty
-                    if (editTextEmail.getText().toString().matches("") || editTextPw.getText().toString().matches("") || editTextConfirmPw.getText().toString().matches("")) {
+                    if (editTextFirstName.getText().toString().isEmpty()
+                        || editTextLastName.getText().toString().isEmpty()
+                        || editTextEmail.getText().toString().isEmpty()
+                        || editTextPw.getText().toString().isEmpty()
+                        || editTextConfirmPw.getText().toString().isEmpty()) {
                         throw new Exception("Fields cannot be left empty!");
                     }
                     // Validate email
@@ -62,12 +67,18 @@ public class SignUp extends AppCompatActivity {
                         throw new Exception("Passwords do not match!");
                     }
                     else {
-                        user = new User(-1, editTextEmail.getText().toString(), editTextPw.getText().toString());
-                        Toast.makeText(SignUp.this, "User has been added!", Toast.LENGTH_SHORT).show();
+                        user = new User(-1,
+                                editTextFirstName.getText().toString(),
+                                editTextLastName.getText().toString(),
+                                editTextEmail.getText().toString(),
+                                editTextPw.getText().toString(),
+                                "false"
+                        );
+                        Toast.makeText(SignUpActivity.this, "User has been added!", Toast.LENGTH_SHORT).show();
                         errorMsg.setText("");
-                        dbHandler = new DbHandler(SignUp.this);
+                        dbHandler = new DbHandler(SignUpActivity.this);
                         dbHandler.insertUserDetails(user);
-                        Intent i = new Intent(SignUp.this, Login.class);
+                        Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
                         startActivity(i);
                     }
                 }
@@ -81,7 +92,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // opening a new activity via a intent.
-                Intent i = new Intent(SignUp.this, ViewUsers.class);
+                Intent i = new Intent(SignUpActivity.this, ViewUsersActivity.class);
                 startActivity(i);
             }
         });

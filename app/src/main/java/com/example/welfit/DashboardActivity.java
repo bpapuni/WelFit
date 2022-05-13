@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
 
-public class Dashboard extends AppCompatActivity implements TabLayoutMediator.TabConfigurationStrategy {
+public class DashboardActivity extends AppCompatActivity implements TabLayoutMediator.TabConfigurationStrategy {
     ViewPager2 viewPager2;
     TabLayout tabLayout;
     ArrayList<String> titles;
