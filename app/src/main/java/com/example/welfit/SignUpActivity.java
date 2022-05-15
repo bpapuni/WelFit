@@ -91,7 +91,6 @@ public class SignUpActivity extends AppCompatActivity {
         btnReadUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // opening a new activity via a intent.
                 Intent i = new Intent(SignUpActivity.this, ViewUsersActivity.class);
                 startActivity(i);
             }

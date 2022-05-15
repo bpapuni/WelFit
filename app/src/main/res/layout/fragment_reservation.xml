@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ReservationFragment"
+    tools:context=".ReservationsFragment"
     android:id="@+id/reservation_overlay">
 
     <RelativeLayout
@@ -104,11 +104,20 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/reservation_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reservation_input_time"
+            android:textColor="#FF0000"
+            android:gravity="center"
+            />
+
         <Button
             android:id="@+id/btn_book"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/reservation_input_time"
+            android:layout_below="@id/reservation_error"
             android:layout_centerHorizontal="true"
             android:text="Book a spot"
             android:textColor="@color/white"

@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
 public class LandingPageActivity extends AppCompatActivity {
-    ImageButton qrScannerBtn, stopwatchBtn;
-    Button reservationsBtn, dashboardBtn, exercisesBtn, membershipBtn, contactusBtn;
-    ArrayList<User> usersArrayList;
+    private ImageButton qrScannerBtn, stopwatchBtn;
+    private Button reservationsBtn, dashboardBtn, exercisesBtn, membershipBtn, contactusBtn;
+    private ArrayList<User> usersArrayList;
     private DbHandler dbHandler;
 
     @Override
@@ -25,12 +26,6 @@ public class LandingPageActivity extends AppCompatActivity {
         usersArrayList = new ArrayList<>();
         dbHandler = new DbHandler(LandingPageActivity.this);
         usersArrayList = dbHandler.getUserDetails();
-
-        for (User u : usersArrayList) {
-            if (u.isLoggedIn().equals("true")) {
-//                Toast.makeText(this, u.getFirstName(), Toast.LENGTH_SHORT).show();
-            }
-        }
 
         reservationsBtn = findViewById(R.id.btn_reservations);
         dashboardBtn = findViewById(R.id.btn_dashboard);

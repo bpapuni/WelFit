@@ -14,9 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".ViewUsersActivity"
+            android:name=".ViewReservationsActivity"
             android:exported="false" />
-        <!-- <activity -->
+        <activity
+            android:name=".ViewUsersActivity"
+            android:exported="false" /> <!-- <activity -->
         <!-- android:name=".SignUp" -->
         <!-- android:exported="false" /> -->
         <activity

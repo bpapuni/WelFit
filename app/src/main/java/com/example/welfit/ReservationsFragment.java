@@ -21,19 +21,22 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
-public class ReservationFragment extends Fragment implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener, TimePickerDialog.OnTimeSetListener {
+public class ReservationsFragment extends Fragment implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener, TimePickerDialog.OnTimeSetListener {
     private RelativeLayout reservationOverlay;
     private EditText editTextClass, dateInput, timeInput;;
     private String className;
-    private Spinner timeSpinner;
     private Button bookBtn;
     private DbHandler dbHandler;
     private User user;
@@ -64,22 +67,6 @@ public class ReservationFragment extends Fragment implements DatePickerDialog.On
                 showDatePickerDialog();
             }
         });
-//
-//        timeSpinner = v.findViewById(R.id.time_spinner);
-//        timeSpinner.setOnItemSelectedListener(this);
-//
-//        List<String> categories = new ArrayList<String>();
-//        categories.add("Item 1");
-//        categories.add("Item 2");
-//        categories.add("Item 3");
-//        categories.add("Item 4");
-//        categories.add("Item 5");
-//        categories.add("Item 6");
-//
-//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, categories);
-//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        timeSpinner.setAdapter(dataAdapter);
-
 
         timeInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +78,16 @@ public class ReservationFragment extends Fragment implements DatePickerDialog.On
         bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//            reservation = new Reservation(email, firstName, lastName, className, time);
+                if (dateInput.getText().toString().isEmpty() || timeInput.getText().toString().isEmpty()) {
+                    TextView reservationError = getActivity().findViewById(R.id.reservation_error);
+                    reservationError.setText("Fields cannot be left empty.");
+                }
+                else {
+                    Toast.makeText(getActivity(), className + " reservation made.", Toast.LENGTH_SHORT).show();
+                    Reservation newReservation = new Reservation(-1, user.getId(), className, dateInput.getText() + " " + timeInput.getText());
+                    dbHandler.insertReservationDetails(newReservation);
+                    getActivity().onBackPressed();
+                }
             }
         });
 

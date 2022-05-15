@@ -76,16 +76,22 @@ public class LoginActivity extends AppCompatActivity {
             loginPrefsEditor.clear();
             loginPrefsEditor.commit();
         }
+        usersArrayList = new ArrayList<>();
+        dbHandler = new DbHandler(LoginActivity.this);
+        usersArrayList = dbHandler.getUserDetails();
 
         // Only run if database exists
         if (!usersArrayList.isEmpty()) {
             // Iterate through database
+            boolean emailFound = false;
             for (User u : usersArrayList) {
-                // Reset login status of all users
+                // Reset users login status
                 u.setIsLoggedIn("false");
+                dbHandler.updateUserDetails(u);
                 // Check if user email input is in the database
                 if (emailInput.getText().toString().equals(u.getEmail())) {
                     if (pwInput.getText().toString().equals(u.getPassword())) {
+                        emailFound = true;
                         u.setIsLoggedIn("true");
                         dbHandler.updateUserDetails(u);
                         startActivity(new Intent(this, LandingPageActivity.class));
@@ -93,16 +99,18 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         errorMsg.setText(R.string.invalid_login_password);
                     }
-                    // Exit loop once instance is found
-                    break;
                 }
                 // No instance of the users email input found in the database
-                else if (usersArrayList.indexOf(u) == usersArrayList.size() - 1) {
+                else if (usersArrayList.indexOf(u) == usersArrayList.size() - 1 && !emailFound) {
                     errorMsg.setText(R.string.invalid_login_email);
                 }
             }
         } else {
             Toast.makeText(this, "No database exists!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void DeleteDatabase(View v) {
+        dbHandler.deleteTables();
     }
 }

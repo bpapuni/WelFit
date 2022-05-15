@@ -4,26 +4,18 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 
 public class ReservationsActivity extends AppCompatActivity {
     RelativeLayout reservationView;
@@ -35,7 +27,11 @@ public class ReservationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_reservations);
 
         reservationView = findViewById( R.id.reservation_view);
-        reservationView.getForeground().setAlpha(0);
+//        reservationView.getForeground().setAlpha(255);
+    }
+
+    public void ViewReservations(View v) {
+        startActivity(new Intent(this, ViewReservationsActivity.class));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -84,7 +80,7 @@ public class ReservationsActivity extends AppCompatActivity {
                 break;
         }
 
-        displayFragment(new ReservationFragment(), className);
+        displayFragment(new ReservationsFragment(), className);
     }
 
     @SuppressLint("NewApi")
@@ -94,7 +90,8 @@ public class ReservationsActivity extends AppCompatActivity {
         fragment.setArguments(bundle);
 
         reservationView = findViewById(R.id.reservation_view);
-        reservationView.getForeground().setAlpha(230);
+        ColorDrawable cd = new ColorDrawable(Color.parseColor("#DD000000"));
+        reservationView.setForeground(cd);
 
         FragmentManager fM = getSupportFragmentManager();
         fM.beginTransaction()
@@ -112,7 +109,7 @@ public class ReservationsActivity extends AppCompatActivity {
         if (count == 0) {
             super.onBackPressed();
         } else {
-                reservationView.getForeground().setAlpha(0);
+            reservationView.getForeground().setAlpha(0);
             getSupportFragmentManager().popBackStack();
         }
     }
