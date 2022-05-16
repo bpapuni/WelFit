@@ -56,7 +56,7 @@ public class LoginActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.btn_login)).perform(click());
         onView(withId(R.id.login_error)).check(matches(withText(R.string.invalid_login_email)));
-    }
+    }//
 
     @Test
     public void IncorrectLoginPassword() {
@@ -66,7 +66,7 @@ public class LoginActivityTest {
         closeSoftKeyboard();
         onView(withId(R.id.btn_login)).perform(click());
         onView(withId(R.id.login_error)).check(matches(withText(R.string.invalid_login_password)));
-    }
+    }//
 
     @Test
     public void signup() {
