@@ -7,62 +7,58 @@
 
     <Button
         android:id="@+id/btn_reservations"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:padding="15dp"
+        android:layout_centerHorizontal="true"
         android:text="@string/reservations"
-        android:backgroundTint="@color/welfit_grey"
-        android:textColor="@color/white"
         android:textSize="30dp" />
 
     <Button
         android:id="@+id/btn_dashboard"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:text="@string/dashboard"
-        android:backgroundTint="@color/welfit_grey"
-        android:textColor="@color/white"
         android:layout_below="@+id/btn_reservations"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:id="@+id/btn_exercises"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:text="@string/exercises"
-        android:backgroundTint="@color/welfit_grey"
-        android:textColor="@color/white"
         android:layout_below="@+id/btn_dashboard"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:id="@+id/btn_membership"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:text="@string/membership"
-        android:backgroundTint="@color/welfit_grey"
-        android:textColor="@color/white"
         android:layout_below="@+id/btn_exercises"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="15dp" />
 
     <Button
         android:id="@+id/btn_contactus"
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:padding="15dp"
+        android:layout_centerHorizontal="true"
         android:textSize="30dp"
         android:text="@string/contactus"
-        android:backgroundTint="@color/welfit_grey"
-        android:textColor="@color/white"
         android:layout_below="@+id/btn_membership"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="15dp" />
 
     <FrameLayout
         android:layout_width="fill_parent"

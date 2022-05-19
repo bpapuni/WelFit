@@ -127,13 +127,14 @@ public class DbHandler extends SQLiteOpenHelper {
         return count;
     }
 
-//    public int updateReservationDetails(User user) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(LOGGED_COL, user.isLoggedIn());
-//        int count = db.update(RESERVATIONS_TABLE, values, ID_COL + " = ?", new String[] { Integer.toString(user.getId()) });
-//        return count;
-//    }
+    public int updateReservationDetails(Reservation reservation) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(CLASS_DATE_COL, reservation.getClassDate());
+        values.put(CLASS_TIME_COL, reservation.getClassTime());
+        int count = db.update(RESERVATIONS_TABLE, values, ID_COL + " = ?", new String[] { Integer.toString(reservation.getId()) });
+        return count;
+    }
 
     public void deleteUser(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -141,9 +142,9 @@ public class DbHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteReservation(String id) {
+    public void deleteReservation(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(RESERVATIONS_TABLE, ID_COL + " = ?", new String[] {id});
+        db.delete(RESERVATIONS_TABLE, ID_COL + " = ?", new String[] {Integer.toString(id)});
         db.close();
     }
 
@@ -162,6 +163,9 @@ public class DbHandler extends SQLiteOpenHelper {
                 + EMAIL_COL + " TEXT,"
                 + PW_COL + " TEXT,"
                 + LOGGED_COL + " TEXT )";
+        db.execSQL(query);
+
+        query = "INSERT INTO " + USERS_TABLE + " VALUES ( -1, 'Admin', 'Istrator', 'admin@gmail.com', 'admin1', 'false' )";
         db.execSQL(query);
 
         // Create Reservations table

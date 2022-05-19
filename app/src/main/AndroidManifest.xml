@@ -12,38 +12,47 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/WelFitTheme.NoActionBar">
+        android:theme="@style/WelFitTheme">
         <activity
             android:name=".YourReservationsActivity"
             android:label="Your Reservations"
-            android:theme="@style/WelFitTheme"
+            android:theme="@style/WelFitTheme.BottomActionBar"
             android:exported="false" />
         <activity
             android:name=".ViewUsersActivity"
+            android:label="WelFit User Information"
             android:exported="false" />
         <activity
             android:name=".StopWatchActivity"
+            android:label="Stopwatch"
             android:exported="false" />
         <activity
             android:name=".ContactUsActivity"
+            android:label="Contact Us"
             android:exported="false" />
         <activity
             android:name=".MembershipActivity"
+            android:label="Membership Details"
             android:exported="false" />
         <activity
             android:name=".ExercisesActivity"
+            android:label="Exercises"
             android:exported="false" />
         <activity
             android:name=".DashboardActivity"
+            android:theme="@style/WelFitTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".ReservationsActivity"
+            android:label="Reservations"
             android:exported="false" />
         <activity
             android:name=".QRScanner"
+            android:theme="@style/WelFitTheme.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/WelFitTheme.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,6 +61,7 @@
         </activity>
         <activity
             android:name=".SignUpActivity"
+            android:label="WelFit Registration"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

@@ -1,5 +1,6 @@
 package com.example.welfit;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -34,6 +35,9 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btn_sign_up);
         btnReadUsers = findViewById(R.id.btn_view_users);
         dbHandler = new DbHandler(SignUpActivity.this);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

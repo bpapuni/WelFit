@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class ReservationRecyclerViewAdapter extends RecyclerView.Adapter<ReservationRecyclerViewAdapter.ViewHolder> {
     private ArrayList<Reservation> reservationArrayList;
     private Context context;
+    private View.OnClickListener onItemClickListener;
 
-    // constructor
     public ReservationRecyclerViewAdapter(ArrayList<Reservation> reservationArrayList, Context context) {
         this.reservationArrayList = reservationArrayList;
         this.context = context;
@@ -41,13 +41,14 @@ public class ReservationRecyclerViewAdapter extends RecyclerView.Adapter<Reserva
 
     @Override
     public int getItemCount() {
-        // returning the size of our array list
         return reservationArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public void setOnItemClickListener(View.OnClickListener clickListener) {
+        onItemClickListener = clickListener;
+    }
 
-        // creating variables for our text views.
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView className, classDate, classTime, classId;
 
         public ViewHolder(@NonNull View itemView) {
@@ -57,6 +58,8 @@ public class ReservationRecyclerViewAdapter extends RecyclerView.Adapter<Reserva
             classDate = itemView.findViewById(R.id.user_item2);
             classTime = itemView.findViewById(R.id.user_item3);
             classId = itemView.findViewById(R.id.user_item4);
+            itemView.setTag(this);
+            itemView.setOnClickListener(onItemClickListener);
         }
     }
 }

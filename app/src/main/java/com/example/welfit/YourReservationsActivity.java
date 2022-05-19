@@ -1,15 +1,24 @@
 package com.example.welfit;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,9 +31,19 @@ public class YourReservationsActivity extends AppCompatActivity {
     private DbHandler dbHandler;
     private User user;
     private ReservationRecyclerViewAdapter reservationRVAdapter;
+    private View.OnClickListener onItemClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
+            int position = viewHolder.getAdapterPosition();
+            Reservation reservation = reservationsArrayList.get(position);
+            displayFragment(new ReservationsFragment(), reservation);
+        }
+    };
+
+    private CoordinatorLayout reservationView;
     private RecyclerView reservationRV;
     private BottomAppBar bottomBar;
-    private TextView id;
     private CheckBox checkBox;
 
     @Override
@@ -43,6 +62,10 @@ public class YourReservationsActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(YourReservationsActivity.this, RecyclerView.VERTICAL, false);
         reservationRV.setLayoutManager(linearLayoutManager);
         reservationRV.setAdapter(reservationRVAdapter);
+        reservationRVAdapter.setOnItemClickListener(onItemClickListener);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         bottomBar = findViewById(R.id.bottom_bar);
         bottomBar.setOnMenuItemClickListener(item -> {
@@ -62,10 +85,10 @@ public class YourReservationsActivity extends AppCompatActivity {
         for (int i = count - 1; i >= 0; i--) {
             RecyclerView.ViewHolder holder = reservationRV.findViewHolderForAdapterPosition(i);
             checkBox = holder.itemView.findViewById(R.id.item_checkbox);
-            id = holder.itemView.findViewById(R.id.user_item4);
+            Reservation reservation = reservationsArrayList.get(i);
 
             if (checkBox.isChecked()) {
-                dbHandler.deleteReservation(id.getText().toString());
+                dbHandler.deleteReservation(reservation.getId());
                 reservationsArrayList.remove(i);
                 reservationRVAdapter.notifyItemRemoved(i);
                 findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
@@ -81,19 +104,66 @@ public class YourReservationsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        for (int i = 0; i < reservationRV.getChildCount(); i++) {
-            RecyclerView.ViewHolder holder = reservationRV.findViewHolderForAdapterPosition(i);
-            checkBox = holder.itemView.findViewById(R.id.item_checkbox);
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            default:
+                for (int i = 0; i < reservationRV.getChildCount(); i++) {
+                    RecyclerView.ViewHolder holder = reservationRV.findViewHolderForAdapterPosition(i);
+                    checkBox = holder.itemView.findViewById(R.id.item_checkbox);
 
-            if (checkBox.getVisibility() == View.INVISIBLE) {
-                checkBox.setVisibility(View.VISIBLE);
-                findViewById(R.id.bottom_bar).setVisibility(View.VISIBLE);
-            }
-            else {
-                checkBox.setVisibility(View.INVISIBLE);
-                findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
-            }
+                    if (checkBox.getVisibility() == View.INVISIBLE) {
+                        checkBox.setVisibility(View.VISIBLE);
+                        findViewById(R.id.bottom_bar).setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        checkBox.setVisibility(View.INVISIBLE);
+                        findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
+                    }
+                }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("NewApi")
+    private void displayFragment(Fragment fragment, Reservation reservation) {
+        Bundle bundle = new Bundle();
+        bundle.putString("className", reservation.getClassName());
+        bundle.putString("classDate", reservation.getClassDate());
+        bundle.putString("classTime", reservation.getClassTime());
+        bundle.putString("action", "Update");
+        bundle.putInt("id", reservation.getId());
+        fragment.setArguments(bundle);
+
+        reservationView = findViewById(R.id.your_reservations);
+        ColorDrawable cd = new ColorDrawable(Color.parseColor("#DD000000"));
+        reservationView.setForeground(cd);
+
+
+        FragmentManager fM = getSupportFragmentManager();
+        fM.beginTransaction()
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .replace(R.id.frame_layout, fragment)
+                .addToBackStack("")
+                .commit();
+    }
+
+    @SuppressLint("NewApi")
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            super.onBackPressed();
+        } else {
+            reservationView.getForeground().setAlpha(0);
+            getSupportFragmentManager().popBackStack();
+            reservationsArrayList.clear();
+            ArrayList newReservationsArrayList = new ArrayList<>();
+            newReservationsArrayList = dbHandler.getReservationDetails(user);
+            reservationsArrayList.addAll(newReservationsArrayList);
+            reservationRVAdapter.notifyDataSetChanged();
+        }
     }
 }

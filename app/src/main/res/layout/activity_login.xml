@@ -90,6 +90,7 @@
         android:textColor="@color/white"
         android:backgroundTint="#127F8B"
         android:layout_gravity="center"
+        android:visibility="gone"
         android:onClick="DeleteDatabase"
         />
 </LinearLayout>

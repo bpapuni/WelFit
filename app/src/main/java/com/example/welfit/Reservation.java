@@ -1,9 +1,10 @@
 package com.example.welfit;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Reservation {
+public class Reservation implements Serializable {
     private int id;
     private int userId;
     private String className;
@@ -25,4 +26,15 @@ public class Reservation {
     }
     public String getClassDate() { return classDate; }
     public String getClassTime() { return classTime; }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", className='" + className + '\'' +
+                ", classDate='" + classDate + '\'' +
+                ", classTime='" + classTime + '\'' +
+                '}';
+    }
 }

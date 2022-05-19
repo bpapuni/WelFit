@@ -2,48 +2,42 @@ package com.example.welfit;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.DialogFragment;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class ReservationsFragment extends Fragment implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener, TimePickerDialog.OnTimeSetListener {
     private RelativeLayout reservationOverlay;
-    private EditText editTextClass, dateInput, timeInput;;
-    private String className;
+    private TextView title;
+    private EditText editTextClass, dateInput, timeInput;
+    private String className, classDate, classTime, action;
+    private Integer id;
     private Button bookBtn;
     private DbHandler dbHandler;
     private User user;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        ContextThemeWrapper contextThemeWrapper = new ContextThemeWrapper(getActivity(), R.style.WelFitTheme_NoActionBar);
+        inflater = getActivity().getLayoutInflater().cloneInContext(contextThemeWrapper);
         View v = inflater.inflate(R.layout.fragment_reservation, container, false);
 
         dbHandler = new DbHandler(getActivity());
@@ -55,12 +49,25 @@ public class ReservationsFragment extends Fragment implements DatePickerDialog.O
         Bundle bundle = this.getArguments();
         if (bundle != null) {
             className = bundle.getString("className");
+            classDate = bundle.getString("classDate");
+            classTime = bundle.getString("classTime");
+            action = bundle.getString("action");
+            id = bundle.getInt("id");
+
         }
         editTextClass.setText(className);
 
         dateInput = v.findViewById(R.id.reservation_date);
         timeInput = v.findViewById(R.id.reservation_time);
         bookBtn = v.findViewById(R.id.btn_book);
+
+        if (action.equals("Update")) {
+            title = v.findViewById(R.id.reservation_banner);
+            title.setText("Update Reservation");
+            dateInput.setText(classDate);
+            timeInput.setText(classTime);
+            bookBtn.setText("Update");
+        }
 
         dateInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,9 +91,17 @@ public class ReservationsFragment extends Fragment implements DatePickerDialog.O
                     reservationError.setText("Fields cannot be left empty.");
                 }
                 else {
-                    Toast.makeText(getActivity(), className + " reservation made.", Toast.LENGTH_SHORT).show();
-                    Reservation newReservation = new Reservation(-1, user.getId(), className, dateInput.getText().toString(), timeInput.getText().toString());
-                    dbHandler.insertReservationDetails(newReservation);
+                    if (action.equals("Update")) {
+                        Toast.makeText(getActivity(), className + " reservation updated.", Toast.LENGTH_SHORT).show();
+
+                        Reservation updatedReservation = new Reservation(id, user.getId(), className, dateInput.getText().toString(), timeInput.getText().toString());
+                        dbHandler.updateReservationDetails(updatedReservation);
+                    }
+                    else {
+                        Toast.makeText(getActivity(), className + " reservation made.", Toast.LENGTH_SHORT).show();
+                        Reservation newReservation = new Reservation(-1, user.getId(), className, dateInput.getText().toString(), timeInput.getText().toString());
+                        dbHandler.insertReservationDetails(newReservation);
+                    }
                     getActivity().onBackPressed();
                 }
             }

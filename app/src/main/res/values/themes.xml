@@ -16,10 +16,16 @@
 
     <style name="WelFitTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
+        <item name="colorAccent">#02CDE3</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="WelFitTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="WelFitTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/welfit_blue</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="WelFitTheme.BottomActionBar" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/welfit_blue</item>
         <item name="colorControlNormal">@color/white</item>
     </style>
@@ -27,6 +33,15 @@
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/welfit_blue</item>
         <item name="android:timePickerStyle">@style/SpinnerTimePicker</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNegativeButtonStyle">@style/DialogButtonStyled</item>
+        <item name="android:buttonBarNeutralButtonStyle">@style/DialogButtonStyled</item>
+    </style>
+
+    <style name="DialogButtonStyled" parent="Theme.MaterialComponents.Light">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:textSize">15dp</item>
     </style>
 
     <style name="SpinnerTimePicker" parent="android:Widget.Material.Light.TimePicker">
