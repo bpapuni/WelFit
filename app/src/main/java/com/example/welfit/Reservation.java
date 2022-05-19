@@ -7,18 +7,22 @@ public class Reservation {
     private int id;
     private int userId;
     private String className;
-    private String time;
+    private String classDate;
+    private String classTime;
 
-    public Reservation(int id, int userId, String className, String time) {
+    public Reservation(int id, int userId, String className, String classDate, String classTime) {
         this.id = id;
         this.userId = userId;
         this.className = className;
-        this.time = time;
+        this.classDate = classDate;
+        this.classTime = classTime;
     }
 
+    public int getId() { return id; }
     public int getUserId() { return userId; }
     public String getClassName() {
         return className;
     }
-    public String getClassTime() { return time; }
+    public String getClassDate() { return classDate; }
+    public String getClassTime() { return classTime; }
 }

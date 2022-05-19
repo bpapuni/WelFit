@@ -55,8 +55,8 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<UserRecyclerVi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // initializing our text views
-            userEmail = itemView.findViewById(R.id.user_email);
-            userPw = itemView.findViewById(R.id.user_pw);
+            userEmail = itemView.findViewById(R.id.user_item1);
+            userPw = itemView.findViewById(R.id.user_item2);
         }
     }
 }

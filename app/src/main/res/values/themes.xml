@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.WelFit" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimary">@color/welfit_blue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
@@ -14,15 +14,19 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="WelFitTheme.NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:timePickerStyle">@style/SpinnerTimePicker</item>
+    </style>
+
+    <style name="WelFitTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/welfit_blue</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/welfit_blue</item>
+        <item name="android:timePickerStyle">@style/SpinnerTimePicker</item>
     </style>
 
     <style name="SpinnerTimePicker" parent="android:Widget.Material.Light.TimePicker">
@@ -31,4 +35,5 @@
     <style name="ClockTimePicker" parent="android:Widget.Material.Light.TimePicker">
         <item name="android:timePickerMode">clock</item>
     </style>
+
 </resources>

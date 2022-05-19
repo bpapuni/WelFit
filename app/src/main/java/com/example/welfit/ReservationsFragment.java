@@ -2,6 +2,7 @@ package com.example.welfit;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -84,7 +85,7 @@ public class ReservationsFragment extends Fragment implements DatePickerDialog.O
                 }
                 else {
                     Toast.makeText(getActivity(), className + " reservation made.", Toast.LENGTH_SHORT).show();
-                    Reservation newReservation = new Reservation(-1, user.getId(), className, dateInput.getText() + " " + timeInput.getText());
+                    Reservation newReservation = new Reservation(-1, user.getId(), className, dateInput.getText().toString(), timeInput.getText().toString());
                     dbHandler.insertReservationDetails(newReservation);
                     getActivity().onBackPressed();
                 }
@@ -107,26 +108,30 @@ public class ReservationsFragment extends Fragment implements DatePickerDialog.O
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        String date = i2 + "/" + i1 + "/" + i;
-        dateInput.setText(date);
+        Date date = new Date(i, i1, i2);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E, dd MMM");
+        String stringDate = dateFormat.format(date);
+        dateInput.setText(stringDate);
     }
 
     private void showTimePickerDialog() {
         Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
-        int minute = c.get(Calendar.MINUTE);
+        int minute = 0;
         TimePickerDialog timePicker = new TimePickerDialog(getActivity(), R.style.DialogTheme,this, hour, minute, false);
+        timePicker.setTitle("Select a time");
         timePicker.show();
     }
 
     @Override
     public void onTimeSet(TimePicker timePicker, int i, int i1) {
-        timeInput.setText(i + ":" + i1);
+        timeInput.setText(String.format("%01d:%02d", i > 12 ? i - 12 : i, i1) + (i > 12 ? " PM" : " AM"));
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        timeSpinner.setSelection();
+
     }
 
     @Override

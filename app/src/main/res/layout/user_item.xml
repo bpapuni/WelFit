@@ -8,31 +8,57 @@
     android:elevation="8dp"
     app:cardCornerRadius="4dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:orientation="vertical">
+        android:layout_margin="3dp">
 
-        <!--text view for our course name-->
         <TextView
-            android:id="@+id/user_email"
+            android:id="@+id/user_item1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="3dp"
-            android:text="Email"
+            android:layout_marginBottom="5dp"
+            android:text="Placeholder1"
             android:textColor="@color/black" />
 
-        <!--text view for our course description-->
         <TextView
-            android:id="@+id/user_pw"
+            android:id="@+id/user_item2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="3dp"
-            android:text="Password"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/user_item1"
+            android:text="Placeholder2"
             android:textColor="@color/black" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/user_item3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:layout_below="@+id/user_item2"
+            android:text="Placeholder3"
+            android:textColor="@color/black"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/user_item4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Placeholder4"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

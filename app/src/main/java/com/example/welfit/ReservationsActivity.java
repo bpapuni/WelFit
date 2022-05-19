@@ -31,7 +31,7 @@ public class ReservationsActivity extends AppCompatActivity {
     }
 
     public void ViewReservations(View v) {
-        startActivity(new Intent(this, ViewReservationsActivity.class));
+        startActivity(new Intent(this, YourReservationsActivity.class));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

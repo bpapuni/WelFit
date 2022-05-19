@@ -25,6 +25,7 @@ public class DbHandler extends SQLiteOpenHelper {
     private static String LOGGED_COL = "false";
     private static String USER_ID_COL = "userId";
     private static String CLASS_NAME_COL = "classname";
+    private static String CLASS_DATE_COL = "classdate";
     private static String CLASS_TIME_COL = "classtime";
 
     public void insertUserDetails(User user) {
@@ -44,6 +45,7 @@ public class DbHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(USER_ID_COL, reservation.getUserId());
         values.put(CLASS_NAME_COL, reservation.getClassName());
+        values.put(CLASS_DATE_COL, reservation.getClassDate().toString());
         values.put(CLASS_TIME_COL, reservation.getClassTime().toString());
         long newRowId = db.insert(RESERVATIONS_TABLE, null, values);
         db.close();
@@ -82,9 +84,10 @@ public class DbHandler extends SQLiteOpenHelper {
                 int id = cursor.getInt(0);
                 int userId = cursor.getInt(1);
                 String className = cursor.getString(2);
-                String classTime = cursor.getString(3);
+                String classDate = cursor.getString(3);
+                String classTime = cursor.getString(4);
 
-                Reservation reservation = new Reservation(id, userId, className, classTime);
+                Reservation reservation = new Reservation(id, userId, className, classDate, classTime);
                 returnList.add(reservation);
             } while(cursor.moveToNext());
         }
@@ -138,6 +141,12 @@ public class DbHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void deleteReservation(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(RESERVATIONS_TABLE, ID_COL + " = ?", new String[] {id});
+        db.close();
+    }
+
     public DbHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -160,7 +169,8 @@ public class DbHandler extends SQLiteOpenHelper {
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + USER_ID_COL + " INTEGER,"
                 + CLASS_NAME_COL + " TEXT,"
-                + CLASS_TIME_COL + " DATE )";
+                + CLASS_DATE_COL + " TEXT,"
+                + CLASS_TIME_COL + " TEXT )";
         db.execSQL(query);
     }
 
