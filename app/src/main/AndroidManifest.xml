@@ -37,7 +37,8 @@
         <activity
             android:name=".ExercisesActivity"
             android:label="Exercises"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".DashboardActivity"
             android:theme="@style/WelFitTheme.NoActionBar"

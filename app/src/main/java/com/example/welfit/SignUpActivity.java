@@ -22,10 +22,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-//        String data = getIntent().getDataString();
-//        EditText email = findViewById(R.id.sign_up_email);
-//        email.setText(data);
-
         errorMsg = findViewById(R.id.sign_up_error);
         editTextFirstName = findViewById(R.id.sign_up_first_name);
         editTextLastName = findViewById(R.id.sign_up_last_name);

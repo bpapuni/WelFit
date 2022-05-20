@@ -16,9 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import java.time.LocalDateTime;
-import java.time.Month;
-
 public class ReservationsActivity extends AppCompatActivity {
     private RelativeLayout reservationView;
 
@@ -76,7 +73,7 @@ public class ReservationsActivity extends AppCompatActivity {
                 break;
         }
 
-        displayFragment(new ReservationsFragment(), className);
+        displayFragment(new ReservationsCreateFragment(), className);
     }
 
     @SuppressLint("NewApi")

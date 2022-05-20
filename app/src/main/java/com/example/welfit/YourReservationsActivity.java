@@ -37,7 +37,7 @@ public class YourReservationsActivity extends AppCompatActivity {
             RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) view.getTag();
             int position = viewHolder.getAdapterPosition();
             Reservation reservation = reservationsArrayList.get(position);
-            displayFragment(new ReservationsFragment(), reservation);
+            displayFragment(new ReservationsUpdateFragment(), reservation);
         }
     };
 

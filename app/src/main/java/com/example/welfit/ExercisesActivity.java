@@ -11,11 +11,13 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 public class ExercisesActivity extends AppCompatActivity {
+    private TextView filters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,10 @@ public class ExercisesActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    public void onClick(View v) {
+        Log.d("Exercises", "test");
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

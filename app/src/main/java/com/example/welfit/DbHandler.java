@@ -155,7 +155,6 @@ public class DbHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.e("DB", "Called");
-        // Create Users table
         String query = "CREATE TABLE " + USERS_TABLE + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + FIRST_NAME_COL + " TEXT,"
@@ -168,7 +167,6 @@ public class DbHandler extends SQLiteOpenHelper {
         query = "INSERT INTO " + USERS_TABLE + " VALUES ( -1, 'Admin', 'Istrator', 'admin@gmail.com', 'admin1', 'false' )";
         db.execSQL(query);
 
-        // Create Reservations table
         query = "CREATE TABLE " + RESERVATIONS_TABLE + " ("
                 + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + USER_ID_COL + " INTEGER,"

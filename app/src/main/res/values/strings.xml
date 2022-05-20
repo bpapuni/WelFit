@@ -27,7 +27,7 @@
     <string name="calendar">A calendar would go here that could be used to track class reservations and personal trainer appointments.</string>
     <string name="inbox">Messages to/from gym administration or personal trainers regarding reservations etc would go here.</string>
     <!--    Exercises strings-->
-    <string name="exercise_filters">Filters\n<a href="ex_chest">Chest</a> - <a href="ex_shoulders">Shoulders</a> - <a href="ex_back">Back</a> - <a href="ex_quads">Quads</a> - <a href="triceps">Triceps</a> - <a href="ex_biceps">Biceps</a></string>
+    <string name="exercise_filters">Filters\n<a href="welfit://ex_chest">Chest</a> - <a href="welfit://ex_shoulders">Shoulders</a> - <a href="welfit://ex_back">Back</a> - <a href="welfit://ex_quads">Quads</a> - <a href="welfit://ex_triceps">Triceps</a> - <a href="welfit://ex_biceps">Biceps</a></string>
     <!--    Membership strings-->
     <string name="membership_info">Membership information would be stored here. Including:\nMembership price, billing history, billing account number.\n\nFunctionality to change app password would also be included.</string>
     <!--    Contact Us strings-->
