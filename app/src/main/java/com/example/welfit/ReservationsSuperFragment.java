@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +15,13 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class ReservationsBaseFragment extends Fragment implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener, TimePickerDialog.OnTimeSetListener {
+public class ReservationsSuperFragment extends Fragment implements DatePickerDialog.OnDateSetListener, AdapterView.OnItemSelectedListener, TimePickerDialog.OnTimeSetListener {
     private EditText dateInput;
     private EditText timeInput;
     private String className;
@@ -65,10 +62,11 @@ public class ReservationsBaseFragment extends Fragment implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-        Date date = new Date(i, i1, i2);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("E, dd MMM");
-        String stringDate = dateFormat.format(date);
-        dateInput.setText(stringDate);
+        SimpleDateFormat simpledateformat = new SimpleDateFormat("EE, dd MMM");
+        Calendar newDate = Calendar.getInstance();
+        newDate.set(i, i1, i2);
+        String selectedDate = simpledateformat.format(newDate.getTime());
+        dateInput.setText(selectedDate);
     }
 
     private void showTimePickerDialog() {

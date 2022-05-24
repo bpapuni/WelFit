@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/loginbg"
-    >
+    android:id="@+id/loginActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,6 +78,7 @@
         android:layout_height="wrap_content"
         android:text="@string/sign_up_cta"
         android:textColor="@color/white"
+        android:textColorLink="@color/welfit_blue"
         android:layout_marginTop="10dp"
         android:gravity="center"
         />

@@ -8,6 +8,7 @@
     <string name="sign_up_cta">Not a member? <a href="welfit://signup"><b>Sign Up</b></a></string>
     <string name="invalid_login_email">Email not recognised!</string>
     <string name="invalid_login_password">Incorrect password!</string>
+    <string name="no_database">No user database found!</string>
     <!--    Sign Up Screen strings-->
     <string name="sign_up_first_name">Enter First Name</string>
     <string name="sign_up_last_name">Enter Last Name</string>

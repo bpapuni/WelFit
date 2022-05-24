@@ -4,14 +4,10 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.appcompat.app.ActionBar;
@@ -45,6 +41,7 @@ public class YourReservationsActivity extends AppCompatActivity {
     private RecyclerView reservationRV;
     private BottomAppBar bottomBar;
     private CheckBox checkBox;
+    private MenuItem editBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +66,8 @@ public class YourReservationsActivity extends AppCompatActivity {
 
         bottomBar = findViewById(R.id.bottom_bar);
         bottomBar.setOnMenuItemClickListener(item -> {
-            switch(item.getItemId()) {
-                case(R.id.action_delete) :
-                    DeleteReservations();
-                    break;
-                default :
-                    break;
+            if (item.getItemId() == R.id.action_delete) {
+                DeleteReservations();
             }
             return false;
         });
@@ -91,39 +84,43 @@ public class YourReservationsActivity extends AppCompatActivity {
                 dbHandler.deleteReservation(reservation.getId());
                 reservationsArrayList.remove(i);
                 reservationRVAdapter.notifyItemRemoved(i);
-                findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
             }
+            checkBox.setVisibility(View.INVISIBLE);
+            findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.your_reservations, menu);
+        editBtn = menu.findItem(R.id.action_edit);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-            default:
-                for (int i = 0; i < reservationRV.getChildCount(); i++) {
-                    RecyclerView.ViewHolder holder = reservationRV.findViewHolderForAdapterPosition(i);
-                    checkBox = holder.itemView.findViewById(R.id.item_checkbox);
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        } else {
+            for (int i = 0; i < reservationRV.getChildCount(); i++) {
+                RecyclerView.ViewHolder holder = reservationRV.findViewHolderForAdapterPosition(i);
+                checkBox = holder.itemView.findViewById(R.id.item_checkbox);
 
-                    if (checkBox.getVisibility() == View.INVISIBLE) {
-                        checkBox.setVisibility(View.VISIBLE);
-                        findViewById(R.id.bottom_bar).setVisibility(View.VISIBLE);
-                    }
-                    else {
-                        checkBox.setVisibility(View.INVISIBLE);
-                        findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
-                    }
+                if (checkBox.getVisibility() == View.INVISIBLE) {
+                    checkBox.setVisibility(View.VISIBLE);
+                    findViewById(R.id.bottom_bar).setVisibility(View.VISIBLE);
+                } else {
+                    checkBox.setVisibility(View.INVISIBLE);
+                    findViewById(R.id.bottom_bar).setVisibility(View.INVISIBLE);
                 }
+            }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void ToggleEditBtn() {
+
     }
 
     @SuppressLint("NewApi")
@@ -160,8 +157,7 @@ public class YourReservationsActivity extends AppCompatActivity {
             reservationView.getForeground().setAlpha(0);
             getSupportFragmentManager().popBackStack();
             reservationsArrayList.clear();
-            ArrayList newReservationsArrayList = new ArrayList<>();
-            newReservationsArrayList = dbHandler.getReservationDetails(user);
+            ArrayList<Reservation> newReservationsArrayList = dbHandler.getReservationDetails(user);
             reservationsArrayList.addAll(newReservationsArrayList);
             reservationRVAdapter.notifyDataSetChanged();
         }

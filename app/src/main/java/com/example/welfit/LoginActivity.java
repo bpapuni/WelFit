@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPrefsEditor = loginPreferences.edit();
 
         saveLogin = loginPreferences.getBoolean("saveLogin", false);
-        if (saveLogin == true) {
+        if (saveLogin) {
             emailInput.setText(loginPreferences.getString("username", ""));
             pwInput.setText(loginPreferences.getString("password", ""));
             rememberMeCheckBox.setChecked(true);
@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             // Iterate through database
             boolean emailFound = false;
             for (User u : usersArrayList) {
-                // Reset users login status
+                // Reset all users' login status
                 u.setIsLoggedIn("false");
                 dbHandler.updateUserDetails(u);
                 // Check if user email input is in the database
@@ -98,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                         errorMsg.setText("");
                     } else {
                         errorMsg.setText(R.string.invalid_login_password);
+                        break;
                     }
                 }
                 // No instance of the users email input found in the database
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         } else {
-            Toast.makeText(this, "No database exists!", Toast.LENGTH_SHORT).show();
+            errorMsg.setText(R.string.no_database);
         }
     }
 

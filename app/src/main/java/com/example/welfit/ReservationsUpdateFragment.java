@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-public class ReservationsUpdateFragment extends ReservationsBaseFragment {
+public class ReservationsUpdateFragment extends ReservationsSuperFragment {
     private TextView reservationError;
     private EditText dateInput, timeInput;
     private String className, classDate, classTime, action;

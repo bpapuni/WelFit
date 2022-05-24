@@ -1,6 +1,9 @@
 package com.example.welfit;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,5 +40,17 @@ public class ViewUsersActivity extends AppCompatActivity {
 
         // setting our adapter to recycler view.
         usersRV.setAdapter(userRVAdapter);
+    }
+
+    public void onClick(View v) {
+        Log.d("Exercises", "test");
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

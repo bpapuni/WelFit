@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Reservation implements Serializable {
+public class Reservation {
     private int id;
     private int userId;
     private String className;
