@@ -1,15 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".MembershipActivity">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="First Name: "
+            android:padding="4dp"
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/details_first_name"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="First Name"
+            android:inputType="text"
+            android:backgroundTint="@color/white"
+            android:padding="4dp"
+            android:background="@drawable/edittextbackground" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_centerInParent="true"
+            android:text="Last Name: "
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/details_last_name"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="Last Name"
+            android:inputType="text"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/edittextbackground" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_centerInParent="true"
+            android:text="Email: "
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/details_email"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="Email"
+            android:inputType="text"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/edittextbackground" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_centerInParent="true"
+            android:text="New Password: "
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/details_pw"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="New Password"
+            android:inputType="textPassword"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/edittextbackground" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_centerInParent="true"
+            android:text="Confirm Password: "
+            android:textSize="18dp"/>
+
+        <EditText
+            android:id="@+id/details_confirm_pw"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/edittextbackground" />
+    </LinearLayout>
 
     <TextView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:padding="4dp"
         android:layout_centerInParent="true"
-        android:text="@string/membership_info"
-        android:textSize="16dp"/>
-</RelativeLayout>
+        android:text="Membership Type:\t\t Basic"
+        android:layout_marginBottom="10dp"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerInParent="true"
+        android:text="Membership Price:\t\t $7/Week"
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/billing_date"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerInParent="true"
+        android:text="Next Billing Date:\t\t\t\t Wed, 08 Jun"
+        android:textSize="18dp"/>
+
+
+    <TextView
+        android:id="@+id/details_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:padding="4dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/details_update"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:text="Update Details"
+        android:textColor="@color/white"
+        android:backgroundTint="#127F8B"
+        android:layout_gravity="center"
+        android:onClick="UpdateDetails" />
+</LinearLayout>

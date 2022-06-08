@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -12,12 +13,29 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.util.Log;
+import android.util.Pair;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.GridLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
+
+import java.util.HashMap;
+
 public class ExercisesActivity extends AppCompatActivity {
-    private TextView filters;
+    private GridLayout gl;
+    private String[] exercises = new String[]{ "Bench Press", "Shoulder Press", "Lateral Raises", "Lat Pulldowns", "Back Squat", "Deadlift", "Tricep Dips", "Bicep Curls"};
+    private String[] filters;
+    private HashMap<String, String> videoIds = new HashMap<String, String>();
+    private YouTubePlayerView youTubePlayerView;
+    private YouTubePlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +44,104 @@ public class ExercisesActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        gl = findViewById(R.id.exercises_grid_layout);
+
+        videoIds.put("Bench Press", "esQi683XR44");
+        videoIds.put("Shoulder Press", "CnBmiBqp-AI");
+        videoIds.put("Lateral Raises", "6m7JO28RqZg");
+        videoIds.put("Lat Pulldowns", "apzFTbsm7HU");
+        videoIds.put("Back Squat", "dW5-C1fsMjk");
+        videoIds.put("Deadlift", "fc4_hq7tjkU");
+        videoIds.put("Tricep Dips", "wjUmnZH528Y");
+        videoIds.put("Bicep Curls", "ykJmrZ5v0Oo");
+
+        youTubePlayerView = findViewById(R.id.example_exercise_video);
+        getLifecycle().addObserver(youTubePlayerView);
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                player = youTubePlayer;
+                displayButtons("");
+            }
+        });
+    }
+
+    public void beginFilter(View v) {
+        switch(v.getId()) {
+            case R.id.chest:
+                displayButtons("Chest");
+                break;
+            case R.id.shoulders:
+                displayButtons("Shoulders");
+                break;
+            case R.id.back:
+                displayButtons("Back");
+                break;
+            case R.id.legs:
+                displayButtons("Legs");
+                break;
+            case R.id.arms:
+                displayButtons("Arms");
+                break;
+            case R.id.close_filters:
+                displayButtons("X");
+                break;
+        }
+    }
+
+    @SuppressLint("NewApi")
+    private void displayButtons(String filter) {
+        if (filter.equals(""))
+            filters = exercises;
+        else
+            findViewById(R.id.close_filters).setVisibility(View.VISIBLE);
+            switch(filter) {
+                case "Chest":
+                    filters = new String[]{ "Bench Press", "Tricep Dips" };
+                    break;
+                case "Shoulders":
+                    filters = new String[]{ "Bench Press", "Shoulder Press", "Lateral Raises", "Tricep Dips" };
+                    break;
+                case "Back":
+                    filters = new String[]{ "Lat Pulldowns", "Deadlift" };
+                    break;
+                case "Legs":
+                    filters = new String[]{ "Back Squat", "Deadlift" };
+                    break;
+                case "Arms":
+                    filters = new String[]{ "Tricep Dips", "Bicep Curls" };
+                    break;
+                case "X":
+                    filters = exercises;
+                    findViewById(R.id.close_filters).setVisibility(View.INVISIBLE);
+                    break;
+            }
+        gl.removeViews(0, gl.getChildCount());
+        int i = 0;
+        for(String s : filters) {
+            Button b = new Button(this);
+            GridLayout.Spec speccolumn = GridLayout.spec(i%2);
+            GridLayout.Spec specrow = GridLayout.spec(i/2, GridLayout.TOP);
+            GridLayout.LayoutParams params = new GridLayout.LayoutParams(specrow, speccolumn);
+            params.setMargins(20, 20, 20, 20);
+
+            b.setText(filters[i]);
+            b.setTooltipText(filters[i]);
+            b.setTextSize(20);
+            b.setWidth(450);
+            b.setHeight(450);
+
+            b.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    player.loadVideo(videoIds.get(view.getTooltipText()), 0);
+                }
+            });
+
+            gl.addView(b, params);
+            i++;
+        }
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

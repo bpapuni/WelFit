@@ -88,14 +88,6 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
-
-        btnReadUsers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SignUpActivity.this, ViewUsersActivity.class);
-                startActivity(i);
-            }
-        });
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

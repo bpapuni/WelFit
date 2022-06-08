@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,9 +15,10 @@ import java.util.ArrayList;
 
 public class LandingPageActivity extends AppCompatActivity {
     private ImageButton qrScannerBtn, stopwatchBtn;
-    private Button reservationsBtn, dashboardBtn, exercisesBtn, membershipBtn, contactusBtn;
+    private Button reservationsBtn, dashboardBtn, exercisesBtn, membershipBtn, contactusBtn, viewUsersBtn, logoutBtn;
     private ArrayList<User> usersArrayList;
     private DbHandler dbHandler;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,14 +28,19 @@ public class LandingPageActivity extends AppCompatActivity {
         usersArrayList = new ArrayList<>();
         dbHandler = new DbHandler(LandingPageActivity.this);
         usersArrayList = dbHandler.getUserDetails();
-
+        user = dbHandler.getLoggedInUser();
         reservationsBtn = findViewById(R.id.btn_reservations);
         dashboardBtn = findViewById(R.id.btn_dashboard);
         exercisesBtn = findViewById(R.id.btn_exercises);
         membershipBtn = findViewById(R.id.btn_membership);
         contactusBtn = findViewById(R.id.btn_contactus);
+        viewUsersBtn = findViewById(R.id.btn_view_users);
+        logoutBtn = findViewById(R.id.btn_logout);
         qrScannerBtn = findViewById(R.id.qr_scanner);
         stopwatchBtn = findViewById(R.id.stopwatch);
+
+        if (!user.getEmail().equals("admin@gmail.com"))
+            viewUsersBtn.setVisibility(View.GONE);
 
         reservationsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +77,14 @@ public class LandingPageActivity extends AppCompatActivity {
             }
         });
 
+        viewUsersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(LandingPageActivity.this, ViewUsersActivity.class);
+                startActivity(i);
+            }
+        });
+
         qrScannerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,6 +96,13 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LandingPageActivity.this, StopWatchActivity.class));
+            }
+        });
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }
