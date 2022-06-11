@@ -37,6 +37,7 @@
         <activity
             android:name=".ExercisesActivity"
             android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:label="Exercises"></activity>
         <activity
             android:name=".DashboardActivity"

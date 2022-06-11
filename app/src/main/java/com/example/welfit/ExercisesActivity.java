@@ -5,28 +5,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.util.Log;
-import android.util.Pair;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.YouTubePlayerFullScreenListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.HashMap;
@@ -40,6 +30,7 @@ public class ExercisesActivity extends AppCompatActivity {
     private HashMap<String, String> videoIds = new HashMap<String, String>();
     private HashMap<String, String> buttonIds = new HashMap<String, String>();
     private YouTubePlayerView youTubePlayerView;
+    private FullScreenHelper fullScreenHelper = new FullScreenHelper(this);
     private YouTubePlayer player;
 
     @Override
@@ -74,14 +65,28 @@ public class ExercisesActivity extends AppCompatActivity {
 
         youTubePlayerView = findViewById(R.id.example_exercise_video);
         getLifecycle().addObserver(youTubePlayerView);
-        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
-            @Override
-            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
-                player = youTubePlayer;
+
+        youTubePlayerView.getYouTubePlayerWhenReady(youTubePlayer -> {
+            player = youTubePlayer;
+                for(TextView tv : filterBtns) {
+                    tv.setVisibility(View.VISIBLE);
                 displayButtons("");
             }
         });
     }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            youTubePlayerView.enterFullScreen();
+        }
+        else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            youTubePlayerView.exitFullScreen();
+        }
+    }
+
 
     public void beginFilter(View v) {
         for(TextView tv : filterBtns) {
@@ -182,6 +187,9 @@ public class ExercisesActivity extends AppCompatActivity {
             b.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    TextView placeholder = findViewById(R.id.video_placeholder);
+                    placeholder.setVisibility(View.GONE);
+                    youTubePlayerView.setVisibility(View.VISIBLE);
                     player.loadVideo(videoIds.get(view.getTooltipText()), 0);
                 }
             });

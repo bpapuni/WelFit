@@ -75,11 +75,12 @@ public class SignUpActivity extends AppCompatActivity {
                                 editTextPw.getText().toString(),
                                 "false"
                         );
-                        Toast.makeText(SignUpActivity.this, "User has been added!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SignUpActivity.this, "User has been added!", Toast.LENGTH_LONG).show();
                         errorMsg.setText("");
                         dbHandler = new DbHandler(SignUpActivity.this);
                         dbHandler.insertUserDetails(user);
                         Intent i = new Intent(SignUpActivity.this, LoginActivity.class);
+                        i.putExtra("email", user.getEmail());
                         startActivity(i);
                     }
                 }

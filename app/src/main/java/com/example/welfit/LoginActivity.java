@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Bundle extras = getIntent().getExtras();
 
         usersArrayList = new ArrayList<>();
         dbHandler = new DbHandler(LoginActivity.this);
@@ -45,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         signUp = findViewById(R.id.btn_sign_up);
         signUp.setMovementMethod(LinkMovementMethod.getInstance());
         rememberMeCheckBox = findViewById(R.id.remember_me);
+
         loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
         loginPrefsEditor = loginPreferences.edit();
 
@@ -53,6 +56,13 @@ public class LoginActivity extends AppCompatActivity {
             emailInput.setText(loginPreferences.getString("username", ""));
             pwInput.setText(loginPreferences.getString("password", ""));
             rememberMeCheckBox.setChecked(true);
+        }
+
+        if (extras != null)
+        {
+            Log.e("1", extras.getString("email"));
+            emailInput.setText(extras.getString("email"));
+            pwInput.setText("");
         }
     }
 
@@ -71,11 +81,10 @@ public class LoginActivity extends AppCompatActivity {
             loginPrefsEditor.putBoolean("saveLogin", true);
             loginPrefsEditor.putString("username", username);
             loginPrefsEditor.putString("password", password);
-            loginPrefsEditor.commit();
         } else {
             loginPrefsEditor.clear();
-            loginPrefsEditor.commit();
         }
+        loginPrefsEditor.commit();
         usersArrayList = new ArrayList<>();
         dbHandler = new DbHandler(LoginActivity.this);
         usersArrayList = dbHandler.getUserDetails();

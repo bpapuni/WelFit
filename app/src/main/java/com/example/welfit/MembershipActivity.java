@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -74,9 +75,10 @@ public class MembershipActivity extends AppCompatActivity {
             if (pw.getText().length() > 0)
                 password = confirmPw.getText().toString();
             detailsError.setText("");
-            Toast.makeText(v.getContext(), "Details updated.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(v.getContext(), "Details updated.", Toast.LENGTH_LONG).show();
             User updatedUser = new User(user.getId(), firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), password, "true");
             dbHandler.updateUserDetails(updatedUser);
+            startActivity(new Intent(this, LandingPageActivity.class));
         }
     }
 
