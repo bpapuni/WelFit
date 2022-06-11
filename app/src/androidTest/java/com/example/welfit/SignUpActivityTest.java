@@ -19,13 +19,13 @@ import org.junit.Test;
 
 public class SignUpActivityTest {
     @Rule
-    public ActivityScenarioRule<SignUpActivity> activityTestRule = new ActivityScenarioRule<>(SignUpActivity.class);
-    ActivityScenario signUpActivity;
-    String firstName, lastName, email, password;
+    public ActivityScenarioRule<SignUpActivity> activityScenarioRule = new ActivityScenarioRule<>(SignUpActivity.class);
+    private ActivityScenario signUpActivity;
+    private String firstName, lastName, email, password;
 
     @Before
     public void setUp() throws Exception {
-        signUpActivity = activityTestRule.getScenario();
+        signUpActivity = activityScenarioRule.getScenario();
         firstName = "test";
         lastName = "account";
         email = "test@gmail.com";

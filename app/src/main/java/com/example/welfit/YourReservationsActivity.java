@@ -119,10 +119,6 @@ public class YourReservationsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void ToggleEditBtn() {
-
-    }
-
     @SuppressLint("NewApi")
     private void displayFragment(Fragment fragment, Reservation reservation) {
         Bundle bundle = new Bundle();

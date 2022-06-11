@@ -19,12 +19,12 @@ import org.junit.Test;
 
 public class ReservationsActivityTest {
     @Rule
-    public ActivityScenarioRule<ReservationsActivity> activityTestRule = new ActivityScenarioRule<>(ReservationsActivity.class);
-    ActivityScenario reservationsActivity;
+    public ActivityScenarioRule<ReservationsActivity> activityScenarioRule = new ActivityScenarioRule<>(ReservationsActivity.class);
+    private ActivityScenario reservationsActivity;
 
     @Before
     public void setUp() throws Exception {
-        reservationsActivity = activityTestRule.getScenario();
+        reservationsActivity = activityScenarioRule.getScenario();
     }
 
     @After

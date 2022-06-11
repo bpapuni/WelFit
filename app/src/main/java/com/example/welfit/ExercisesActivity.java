@@ -17,9 +17,11 @@ import android.util.Pair;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,12 +30,15 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class ExercisesActivity extends AppCompatActivity {
     private GridLayout gl;
     private String[] exercises = new String[]{ "Bench Press", "Shoulder Press", "Lateral Raises", "Lat Pulldowns", "Back Squat", "Deadlift", "Tricep Dips", "Bicep Curls"};
     private String[] filters;
+    private TextView[] filterBtns;
     private HashMap<String, String> videoIds = new HashMap<String, String>();
+    private HashMap<String, String> buttonIds = new HashMap<String, String>();
     private YouTubePlayerView youTubePlayerView;
     private YouTubePlayer player;
 
@@ -47,6 +52,8 @@ public class ExercisesActivity extends AppCompatActivity {
 
         gl = findViewById(R.id.exercises_grid_layout);
 
+        filterBtns = new TextView[] { findViewById(R.id.chest), findViewById(R.id.shoulders), findViewById(R.id.back), findViewById(R.id.legs), findViewById(R.id.arms) };
+
         videoIds.put("Bench Press", "esQi683XR44");
         videoIds.put("Shoulder Press", "CnBmiBqp-AI");
         videoIds.put("Lateral Raises", "6m7JO28RqZg");
@@ -55,6 +62,15 @@ public class ExercisesActivity extends AppCompatActivity {
         videoIds.put("Deadlift", "fc4_hq7tjkU");
         videoIds.put("Tricep Dips", "wjUmnZH528Y");
         videoIds.put("Bicep Curls", "ykJmrZ5v0Oo");
+
+        buttonIds.put("Bench Press", "R.id.benchBtn");
+        buttonIds.put("Shoulder Press", "R.id.shoulder_pressBtn");
+        buttonIds.put("Lateral Raises", "R.id.lat_raisesBtn");
+        buttonIds.put("Lat Pulldowns", "R.id.pulldownsBtn");
+        buttonIds.put("Back Squat", "R.id.squatBtn");
+        buttonIds.put("Deadlift", "R.id.deadliftBtn");
+        buttonIds.put("Tricep Dips", "R.id.dipsBtn");
+        buttonIds.put("Bicep Curls", "R.id.curlsBtn");
 
         youTubePlayerView = findViewById(R.id.example_exercise_video);
         getLifecycle().addObserver(youTubePlayerView);
@@ -68,6 +84,11 @@ public class ExercisesActivity extends AppCompatActivity {
     }
 
     public void beginFilter(View v) {
+        for(TextView tv : filterBtns) {
+            tv.setBackground(null);
+        }
+        if (v.getId() != R.id.close_filters)
+            v.setBackground(getDrawable(R.drawable.roundedcorner));
         switch(v.getId()) {
             case R.id.chest:
                 displayButtons("Chest");
@@ -131,6 +152,32 @@ public class ExercisesActivity extends AppCompatActivity {
             b.setTextSize(20);
             b.setWidth(450);
             b.setHeight(450);
+            switch(filters[i]) {
+                case "Bench Press":
+                    b.setId(R.id.benchBtn);
+                    break;
+                case "Shoulder Press":
+                    b.setId(R.id.shoulder_pressBtn);
+                    break;
+                case "Lateral Raises":
+                    b.setId(R.id.lat_raisesBtn);
+                    break;
+                case "Lat Pulldowns":
+                    b.setId(R.id.pulldownsBtn);
+                    break;
+                case "Back Squat":
+                    b.setId(R.id.squatBtn);
+                    break;
+                case "Deadlift":
+                    b.setId(R.id.deadliftBtn);
+                    break;
+                case "Tricep Dips":
+                    b.setId(R.id.dipsBtn);
+                    break;
+                case "Bicep Curls":
+                    b.setId(R.id.curlsBtn);
+                    break;
+            }
 
             b.setOnClickListener(new View.OnClickListener() {
                 @Override

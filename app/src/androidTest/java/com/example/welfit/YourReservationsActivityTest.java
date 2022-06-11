@@ -19,7 +19,7 @@ import org.junit.Test;
 public class YourReservationsActivityTest {
     @Rule
     public ActivityScenarioRule<YourReservationsActivity> activityTestRule = new ActivityScenarioRule<>(YourReservationsActivity.class);
-    ActivityScenario reservationsActivity;
+    private ActivityScenario reservationsActivity;
 
     @Before
     public void setUp() throws Exception {
@@ -38,18 +38,11 @@ public class YourReservationsActivityTest {
     }
 
     @Test
-    public void BottomAppBarCloses() {
+    public void BottomAppBarCloses() throws InterruptedException {
+        Thread.sleep(200);
         onView(withId(R.id.action_edit)).perform(click());
         onView(withId(R.id.bottom_bar)).check(matches(isDisplayed()));
         onView(withId(R.id.action_delete)).perform(click());
         onView(withId(R.id.bottom_bar)).check(matches(not(isDisplayed())));
-    }
-
-    @Test
-    public void FragmentCloses() {
-        onView(withId(R.id.btn_boxing)).perform(click());
-        onView(withId(R.id.reservation_overlay)).check(matches(isDisplayed()));
-        onView(withId(R.id.reservation_overlay)).perform(click());
-        onView(withId(R.id.reservationsActivity)).check(matches(isDisplayed()));
     }
 }

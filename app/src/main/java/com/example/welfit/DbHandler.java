@@ -136,9 +136,9 @@ public class DbHandler extends SQLiteOpenHelper {
         return count;
     }
 
-    public void deleteUser(String id) {
+    public void deleteUser(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(USERS_TABLE, ID_COL + " = ?", new String[] {id});
+        db.delete(USERS_TABLE, ID_COL + " = ?", new String[] {Integer.toString(id)});
         db.close();
     }
 

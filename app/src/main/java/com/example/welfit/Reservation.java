@@ -5,11 +5,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Reservation {
-    private int id;
-    private int userId;
-    private String className;
-    private String classDate;
-    private String classTime;
+    private int id, userId;
+    private String className, classDate, classTime;
 
     public Reservation(int id, int userId, String className, String classDate, String classTime) {
         this.id = id;
@@ -26,15 +23,4 @@ public class Reservation {
     }
     public String getClassDate() { return classDate; }
     public String getClassTime() { return classTime; }
-
-    @Override
-    public String toString() {
-        return "Reservation{" +
-                "id=" + id +
-                ", userId=" + userId +
-                ", className='" + className + '\'' +
-                ", classDate='" + classDate + '\'' +
-                ", classTime='" + classTime + '\'' +
-                '}';
-    }
 }

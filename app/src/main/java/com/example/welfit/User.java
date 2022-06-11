@@ -55,10 +55,4 @@ public class User {
 
     public String isLoggedIn() { return loggedIn; }
     public void setIsLoggedIn(String value) { this.loggedIn = value; }
-
-    @NonNull
-    @Override
-    public String toString() {
-        return "Id: " + id + ", fName: " + firstName + ", lName: " + lastName + ", email: " + email + ", password: " + password + ", loggedIn: " + loggedIn;
-    }
 }

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/exercisesActivity">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/example_exercise_video"
@@ -13,7 +14,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:autoPlay="false"/>
+        app:autoPlay="false" />
 
     <TextView
         android:id="@+id/filters"
@@ -30,8 +31,8 @@
         android:layout_height="wrap_content"
         android:text="Chest"
         android:textSize="16dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:textColor="@color/welfit_blue"
         android:layout_below="@+id/filters"
         android:onClick="beginFilter">
@@ -43,7 +44,8 @@
         android:layout_height="wrap_content"
         android:text="Shoulders"
         android:textSize="16dp"
-        android:layout_marginRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:textColor="@color/welfit_blue"
         android:layout_toRightOf="@id/chest"
         android:layout_below="@+id/filters"
@@ -56,7 +58,8 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:textSize="16dp"
-        android:layout_marginRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:textColor="@color/welfit_blue"
         android:layout_toRightOf="@id/shoulders"
         android:layout_below="@+id/filters"
@@ -69,7 +72,8 @@
         android:layout_height="wrap_content"
         android:text="Legs"
         android:textSize="16dp"
-        android:layout_marginRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:textColor="@color/welfit_blue"
         android:layout_toRightOf="@id/back"
         android:layout_below="@+id/filters"
@@ -82,7 +86,8 @@
         android:layout_height="wrap_content"
         android:text="Arms"
         android:textSize="16dp"
-        android:layout_marginRight="10dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:textColor="@color/welfit_blue"
         android:layout_toRightOf="@id/legs"
         android:layout_below="@+id/filters"

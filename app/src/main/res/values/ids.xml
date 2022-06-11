@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="benchBtn" type="id"/>
+    <item name="shoulder_pressBtn" type="id"/>
+    <item name="lat_raisesBtn" type="id"/>
+    <item name="pulldownsBtn" type="id"/>
+    <item name="squatBtn" type="id"/>
+    <item name="deadliftBtn" type="id"/>
+    <item name="dipsBtn" type="id"/>
+    <item name="curlsBtn" type="id"/>
+</resources>

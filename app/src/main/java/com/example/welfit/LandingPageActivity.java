@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,7 @@ public class LandingPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_landing_page);
 
         usersArrayList = new ArrayList<>();
         dbHandler = new DbHandler(LandingPageActivity.this);
@@ -39,7 +38,7 @@ public class LandingPageActivity extends AppCompatActivity {
         qrScannerBtn = findViewById(R.id.qr_scanner);
         stopwatchBtn = findViewById(R.id.stopwatch);
 
-        if (!user.getEmail().equals("admin@gmail.com"))
+        if (user.getId() != -1)
             viewUsersBtn.setVisibility(View.GONE);
 
         reservationsBtn.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +101,7 @@ public class LandingPageActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                startActivity(new Intent(LandingPageActivity.this, LoginActivity.class));
             }
         });
     }

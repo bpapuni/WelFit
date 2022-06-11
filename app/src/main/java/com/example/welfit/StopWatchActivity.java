@@ -1,30 +1,23 @@
 package com.example.welfit;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Activity;
-import android.os.Handler;
-import android.util.Log;
-import android.view.View;
-import android.os.Bundle;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
-
-import android.widget.Button;
-import android.widget.TextView;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.ToggleButton;
 
 public class StopWatchActivity extends AppCompatActivity {
-    /** Called when the activity is first created. */
-    Button start,stop;
-    long init, now, time, paused;
-    ToggleButton passTog;
-    TextView display;
-    Handler handler;
+    private long init, now, time, paused;
+    private ToggleButton passTog;
+    private TextView display;
+    private Handler handler;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
